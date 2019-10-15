@@ -9,6 +9,8 @@ function App() {
 
 const generateArray = (n) => Array.from({length: n}, (v, k) => k+1);
 
-console.log(generateArray(10));
+const generateRandomArray = (n) => Array.from({length: n}, (v,k) => Math.floor(Math.random() * 25 ) + 1);
+
+console.log(generateRandomArray(10));
 
 export default App
