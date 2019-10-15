@@ -1,8 +1,8 @@
 import React from 'react'
 import { render } from 'react-dom'
-import MyApp from './MyApp'
+import App from './App'
 
-render(<MyApp id='reactinjectedhere'/>, document.getElementById('root')
+render(<App/>, document.getElementById('reactinjectedhere')
 
 
 )
