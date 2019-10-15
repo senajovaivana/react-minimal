@@ -7,4 +7,8 @@ function App() {
     );
 }
 
+const generateArray = (n) => Array.from({length: n}, (v, k) => k+1);
+
+console.log(generateArray(10));
+
 export default App
