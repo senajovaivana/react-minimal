@@ -1,16 +1,14 @@
 import React from 'react'
 import AppTitle from "./AppTitle";
 
-const array = [2, 56, 23, 88, 17, 4];
+const arrayTask5 = [2, 5, 8, 10];
 
 function App() {
     return(
         <ul>
-        {array.map(item => {
-            if (item > 15) {
-                return <li>{item}</li>;
-            }
-            })}
+        {arrayTask5.map(item => {
+            return <li>{item*item}</li>;
+        })}
         </ul>
     );
 }
@@ -18,8 +16,6 @@ function App() {
 const generateArray = (n) => Array.from({length: n}, (v, k) => k+1);
 
 const generateRandomArray = (n) => Array.from({length: n}, (v,k) => Math.floor(Math.random() * 25 ) + 1);
-
-
 
 console.log(generateRandomArray(10));
 
