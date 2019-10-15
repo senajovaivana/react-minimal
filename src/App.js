@@ -1,22 +1,120 @@
 import React from 'react'
-import AppTitle from "./AppTitle";
 
-const arrayTask5 = [2, 5, 8, 10];
+const data = [{
+        teacherName: "Jan Nowak",
+        teacherAge: 36,
+        active: true,
+        students: [
+            {
+                name: "Maciej Janosz",
+                age: 12
+            },
+            {
+                name: "Wojciech Kowalski",
+                age: 15
+            },
+            {
+                name: "Wioletta PoznaĹska",
+                age: 1000000
+            }
+        ]
+    },
+    {
+        teacherName: "Mariusz Flasinski",
+        teacherAge: 56,
+        active: true,
+        students: [
+            {
+                name: "Jan Kot",
+                age: 12
+            },
+            {
+                name: "Jan Ziobro",
+                age: 15
+            },
+            {
+                name: "Adam Malysz",
+                age: 41
+            }
+        ]
+    },
+    {
+        teacherName: "Wojciech Kuzak",
+        teacherAge: 44,
+        active: false,
+        students: [
+            {
+                name: "Janina Wronska",
+                age: 22
+            },
+            {
+                name: "John Dover",
+                age: 7
+            },
+            {
+                name: "Emil Petterson",
+                age: 46
+            }
+        ]
+    }
+];
 
 function App() {
     return(
-        <ul>
-        {arrayTask5.map(item => {
-            return <li>{item*item}</li>;
-        })}
-        </ul>
+        <div>
+            <button
+                className="btn" onClick={onClickAllStudents}>All students</button>
+            <button
+                className="btn" onClick={onClickAllStudentsAlpabetically}>Sort students</button>
+            <button
+                className="btn" onClick={onClickListOldStudents}>Old students</button>
+        </div>
+
     );
 }
 
-const generateArray = (n) => Array.from({length: n}, (v, k) => k+1);
+function onClickAllStudents() {
+    const array = []
+    for(let i = 0; i < data.length ; i++) {
+        for(let j = 0; j < data[i].students.length ; j++) {
+            array.push(data[i].students[j]);
+        }
+    }
+    const listItems = array.map((number) =>
+        <li>{number}</li>
+    );
+    console.log(array);
+}
 
-const generateRandomArray = (n) => Array.from({length: n}, (v,k) => Math.floor(Math.random() * 25 ) + 1);
+function onClickAllStudentsAlpabetically() {
+    const array = []
+    for(let i = 0; i < data.length ; i++) {
+        for(let j = 0; j < data[i].students.length ; j++) {
+            array.push(data[i].students[j]);
+        }
+    }
+    array.sort(function(a, b){
+        if(a.name < b.name) { return -1; }
+        if(a.name > b.name) { return 1; }
+        return 0;
+    })
 
-console.log(generateRandomArray(10));
+    console.log(array);
+}
+
+function onClickListOldStudents() {
+    const array = []
+    let student = {}
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].active) {
+            for (let j = 0; j < data[i].students.length; j++) {
+                student = data[i].students[j]
+                if (student.age > 20)
+                    array.push(student);
+            }
+        }
+    }
+   console.log(array);
+}
 
 export default App
