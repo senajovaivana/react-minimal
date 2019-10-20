@@ -5,7 +5,8 @@ class MainClass extends React.Component {
         super(props);
         this.state = {
             a : 0,
-            b : 0
+            b : 0,
+            array : []
         };
         this.onClickA = this.onClickA.bind(this);
         this.onClickB = this.onClickB.bind(this);
@@ -16,6 +17,7 @@ class MainClass extends React.Component {
             <div>
                 <input onChange={this.onClickA} type='number'/>
                 <input onChange={this.onClickB} type='number'/>
+                <div > {this.state.array.toString()} </div>
             </div>
         );
     }
@@ -23,15 +25,27 @@ class MainClass extends React.Component {
     onClickA(event) {
         this.setState({ a: event.target.value},
             () => {
-                console.log("Value changed a:" + this.state.a);
+                this.generateArray();
             });
     }
 
     onClickB(event) {
         this.setState({ b: event.target.value},
             () => {
-                console.log("Value changed b: " + this.state.b);
+                this.generateArray();
             });
+
+    }
+
+    generateArray() {
+        let a = parseInt(this.state.a);
+        let b = parseInt(this.state.b);
+        let newArray = [];
+        if (a < b && a > 0) {
+            newArray = Array.apply(null, {length: b - a + 1})
+                       .map(function (value, index) { return index + a });
+        }
+        this.setState({ array: newArray });
     }
 }
 
