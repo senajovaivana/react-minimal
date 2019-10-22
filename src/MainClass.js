@@ -10,9 +10,20 @@ class MainClass extends React.Component {
         };
         this.onClickA = this.onClickA.bind(this);
         this.onClickB = this.onClickB.bind(this);
+        this.rend = 0;
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        console.timeEnd("render - " + this.rend);
+    }
+
+    componentDidMount() {
+        console.timeEnd("render - " + this.rend);
     }
 
     render() {
+        this.rend += 1;
+        console.time("render - " + this.rend);
         return(
             <div>
                 <h2>Enter 2 numbers: </h2>
@@ -45,7 +56,7 @@ class MainClass extends React.Component {
         let newArray = [];
         if (a < b && a > 0) {
             newArray = Array.apply(null, {length: b - a + 1})
-                       .map(function (value, index) { return index + a });
+                .map(function (value, index) { return index + a });
         }
         this.setState({ array: newArray });
     }
