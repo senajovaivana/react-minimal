@@ -6,10 +6,12 @@ class MainClass extends React.Component {
         this.state = {
             a : 0,
             b : 0,
-            array : []
+            array : [],
+            squareRootsArray : []
         };
-        this.onClickA = this.onClickA.bind(this);
-        this.onClickB = this.onClickB.bind(this);
+        this.onChangeA = this.onChangeA.bind(this);
+        this.onChangeB = this.onChangeB.bind(this);
+        this.onClickProcessArray = this.onClickProcessArray.bind(this);
         this.rend = 0;
     }
 
@@ -26,23 +28,30 @@ class MainClass extends React.Component {
         console.time("render - " + this.rend);
         return(
             <div>
-                <h2>Enter 2 numbers: </h2>
-                <input onChange={this.onClickA} type='number'/>
-                <input onChange={this.onClickB} type='number'/>
+                <input onChange={this.onChangeA} type='number'/>
+                <input onChange={this.onChangeB} type='number'/>
                 <div > Then the array is: {this.state.array.toString()} </div>
+                <button onClick={this.onClickProcessArray}>Process array</button>
+                <div> The array with square values: {this.state.squareRootsArray.toString()} </div>
             </div>
         );
 
     }
 
-    onClickA(event) {
+    onClickProcessArray() {
+        this.setState( {
+            squareRootsArray : this.state.array.map((s) => Math.sqrt(s))
+        });
+    }
+
+    onChangeA(event) {
         this.setState({ a: event.target.value},
             () => {
                 this.generateArray();
             });
     }
 
-    onClickB(event) {
+    onChangeB(event) {
         this.setState({ b: event.target.value},
             () => {
                 this.generateArray();

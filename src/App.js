@@ -4,7 +4,10 @@ import MainClass from "./MainClass";
 class App extends React.Component {
     render() {
         return (
-           <MainClass/>
+            <div>
+                <h2>Enter 2 numbers: </h2>
+                <MainClass/>
+            </div>
         );
     }
 }
