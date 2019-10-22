@@ -15,11 +15,13 @@ class MainClass extends React.Component {
     render() {
         return(
             <div>
+                <h2>Enter 2 numbers: </h2>
                 <input onChange={this.onClickA} type='number'/>
                 <input onChange={this.onClickB} type='number'/>
-                <div > {this.state.array.toString()} </div>
+                <div > Then the array is: {this.state.array.toString()} </div>
             </div>
         );
+
     }
 
     onClickA(event) {
